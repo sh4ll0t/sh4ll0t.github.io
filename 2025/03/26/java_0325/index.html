@@ -1,0 +1,216 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>java 文件安全 | shallot's blog</title><meta name="author" content="shallot"><meta name="copyright" content="shallot"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="文件安全 sun.misc.Unsafe">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java 文件安全">
+<meta property="og:url" content="http://example.com/2025/03/26/java_0325/index.html">
+<meta property="og:site_name" content="shallot&#39;s blog">
+<meta property="og:description" content="文件安全 sun.misc.Unsafe">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2025-03-25T17:09:11.982Z">
+<meta property="article:modified_time" content="2025-03-25T17:10:02.760Z">
+<meta property="article:author" content="shallot">
+<meta property="article:tag" content="java安全">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/03/26/java_0325/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'java 文件安全',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-03-26 01:10:02'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="shallot's blog"><span class="site-name">shallot's blog</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">java 文件安全</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-03-25T17:09:11.982Z" title="发表于 2025-03-26 01:09:11">2025-03-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-03-25T17:10:02.760Z" title="更新于 2025-03-26 01:10:02">2025-03-26</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="java 文件安全"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="java学习笔记"><a href="#java学习笔记" class="headerlink" title="java学习笔记"></a>java学习笔记</h1><h2 id="sun-misc-Unsafe"><a href="#sun-misc-Unsafe" class="headerlink" title="sun.misc.Unsafe"></a>sun.misc.Unsafe</h2><p>sun.misc.Unsafe是Java底层API(仅限Java内部使用,反射可调用)提供的一个神奇的Java类，Unsafe提供了非常底层的内存、CAS、线程调度、类、对象等操作。</p>
+<p>参考</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://zhuanlan.zhihu.com/p/348052930</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.javasec.org/javase/Unsafe/</span><br></pre></td></tr></table></figure>
+<h3 id="如何获取Unsafe对象"><a href="#如何获取Unsafe对象" class="headerlink" title="如何获取Unsafe对象"></a>如何获取Unsafe对象</h3><p>在使用Unsafe之前，我们需要创建Unsafe对象的实例。这并不像Unsafe unsafe &#x3D; new Unsafe()这么简单，因为Unsafe的构造器是私有的。它也有一个静态的getUnsafe()方法，但如果你直接调用Unsafe.getUnsafe()，你可能会得到SecurityException异常。只能从受信任的代码中使用这个方法。</p>
+<p>sun.misc.Unsafe代码片段：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sun.reflect.CallerSensitive;</span><br><span class="line"><span class="keyword">import</span> sun.reflect.Reflection;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">class</span> <span class="title class_">Unsafe</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Unsafe theUnsafe;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        theUnsafe = <span class="keyword">new</span> <span class="title class_">Unsafe</span>();</span><br><span class="line">        省去其他代码......</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">Unsafe</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@CallerSensitive</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Unsafe <span class="title function_">getUnsafe</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">Class</span> <span class="variable">var0</span> <span class="operator">=</span> Reflection.getCallerClass();</span><br><span class="line">        <span class="keyword">if</span> (var0.getClassLoader() != <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">SecurityException</span>(<span class="string">&quot;Unsafe&quot;</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> theUnsafe;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    省去其他代码......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>简单解析一下代码：</p>
+<p>前面的代码都是private,后面@CallerSensitive：这是一个注解，表示该方法与调用它的类相关。具体来说，CallerSensitive 注解用于标记那些可能依赖于调用方法的类（或者类加载器）信息的方法。这个注解是 sun.reflect 包中的一个特殊注解，主要用于反射相关的操作。</p>
+<p>Reflection.getCallerClass()：这个方法通过反射获取调用 getUnsafe() 方法的类。它返回的 Class 对象代表了调用 getUnsafe() 方法的类的类型。</p>
+<p>if (var0.getClassLoader() !&#x3D; null)：检查调用该方法的类是否由类加载器加载。如果 var0.getClassLoader() 不为 null，则表示调用 getUnsafe() 方法的类是由类加载器加载的，而不是由引导类加载器（bootstrap class loader）加载的。</p>
+<p>throw new SecurityException(“Unsafe”)：如果调用 getUnsafe() 方法的类有自己的类加载器（getClassLoader() !&#x3D; null），则抛出 SecurityException。这是为了避免 Unsafe 类被不安全的代码访问。这个检查是为了确保只有受信任的代码能够访问 Unsafe。</p>
+<p>else { return theUnsafe; }：如果调用者是由引导类加载器加载的（即安全的调用者），则返回 theUnsafe，即 Unsafe 类的实例。</p>
+<p>更清晰的解读</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">@CallerSensitive</span><br><span class="line">public static Unsafe getUnsafe() &#123;</span><br><span class="line">    // ----- 这里去获取当前类的ClassLoader加载器</span><br><span class="line">    Class var0 = Reflection.getCallerClass();</span><br><span class="line">    // ----- 判断var0是不是BootstrapClassLoader</span><br><span class="line">    if (!VM.isSystemDomainLoader(var0.getClassLoader())) &#123;</span><br><span class="line">        // ----- 否：抛出SecurityException异常</span><br><span class="line">        throw new SecurityException(&quot;Unsafe&quot;);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        // ----- 是：返回unsafe对象</span><br><span class="line">        return theUnsafe;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>由上代码片段可以看到，Unsafe类是一个不能被继承的类且不能直接通过new的方式创建Unsafe类实例，如果通过getUnsafe方法获取Unsafe实例还会检查类加载器，默认只允许Bootstrap Classloader调用。</p>
+<p>试验如图：<br><img src="/./img/Snipaste_2025-03-25_01-28-57.png"></p>
+<p>既然无法直接通过Unsafe.getUnsafe()的方式调用，那么可以使用反射的方式去获取Unsafe类实例</p>
+<h4 id="调用方式一："><a href="#调用方式一：" class="headerlink" title="调用方式一："></a>调用方式一：</h4><p>因为该类将他的实例化定义在theUnsafe成员变量里面，所以可以使用反射直接获取该变量的值。</p>
+<p>代码示例<br><img src="/./img/Snipaste_2025-03-25_01-43-31.png"></p>
+<p>ps:Class<?> aClass 是一种泛型语法，用来声明一个 Class 类型的变量，而其中的 <?> 表示 通配符（Wildcard），它用于表示未知类型。</p>
+<h4 id="调用方式二："><a href="#调用方式二：" class="headerlink" title="调用方式二："></a>调用方式二：</h4><p>还有种方式就是反射调用getUnsafe()方法，该方法会直接返回UNsafe实例对象。那么可以反射获取该构造方法的实例，然后调用该方法</p>
+<p><img src="/./img/Snipaste_2025-03-25_01-51-38.png"></p>
+<h3 id="allocateInstance无视构造方法创建类实例"><a href="#allocateInstance无视构造方法创建类实例" class="headerlink" title="allocateInstance无视构造方法创建类实例"></a>allocateInstance无视构造方法创建类实例</h3><p>如果因为某种原因我们不能直接通过反射的方式去创建UnSafeTest类实例，那么这个时候使用Unsafe的allocateInstance方法就可以绕过这个限制了。</p>
+<p><code>UnSafeTest test = (UnSafeTest) unsafe1.allocateInstance(UnSafeTest.class);</code></p>
+<p>Google的GSON库在JSON反序列化的时候就使用这个方式来创建类实例，在渗透测试中也会经常遇到这样的限制，比如RASP限制了java.io.FileInputStream类的构造方法导致我们无法读文件或者限制了UNIXProcess&#x2F;ProcessImpl类的构造方法导致我们无法执行本地命令等。</p>
+<h2 id="java文件系统"><a href="#java文件系统" class="headerlink" title="java文件系统"></a>java文件系统</h2><p>在Java SE中内置了两类文件系统：java.io和java.nio，java.nio的实现是sun.nio，文件系统底层的API实现如下图：<br><img src="/./img/Snipaste_2025-03-25_12-30-59.png"><br>简单解析一下这个图片:<br><code>java.io 包:</code></p>
+<p>java.io.FileSystem：表示一个文件系统的抽象，通常用于进行文件和目录的操作。<br>java.io.FileInputStream 和 java.io.FileOutputStream：这两个类用于文件的输入输出操作，分别用于从文件中读取数据和向文件写入数据。<br>java.io.RandomAccessFile：这个类允许随机访问文件内容，可以在文件的任意位置读取和写入。</p>
+<p><code>sun.nio 包:</code></p>
+<p>sun.nio.ch.FileChannelImpl：表示 NIO（New I&#x2F;O）中的文件通道实现类，允许高效地读写文件。<br>sun.nio.ch.FileDispatcher：一个文件调度器，负责文件操作的具体实现，可能是通过本地方法与操作系统交互。<br>sun.nio.ch.NativeDispatcher：负责与操作系统的底层文件操作相关的调度和实现。<br>sun.nio.ch.SocketDispatcher：负责处理与套接字（Socket）相关的操作。<br>sun.nio.ch.DatagramDispatcher：负责处理数据报（Datagram）相关的操作。<br>sun.nio.fs 子包：实现操作系统特定的文件系统和文件操作：<br>WindowsNativeDispatcher：针对 Windows 系统的本地文件操作实现。<br>UnixNativeDispatcher：针对 Unix 系统的本地文件操作实现。<br>UnixCopyFile：可能用于在 Unix 系统中复制文件。<br>操作系统特定的类:</p>
+<p>java.io.WinNTFileSystem 和 java.io.UnixFileSystem：分别处理 Windows 和 Unix 系统上的文件系统差异，提供不同的文件系统实现。</p>
+<p>都是一些定义类的，不多了解</p>
+<h3 id="Java-IO-文件系统"><a href="#Java-IO-文件系统" class="headerlink" title="Java IO 文件系统"></a>Java IO 文件系统</h3><p>Java抽象出了一个叫做文件系统的对象:java.io.FileSystem，不同的操作系统有不一样的文件系统,例如Windows和Unix就是两种不一样的文件系统： java.io.UnixFileSystem、java.io.WinNTFileSystem</p>
+<p>java.io.FileSystem是一个抽象类，它抽象了对文件的操作，不同操作系统版本的JDK会实现其抽象的方法从而也就实现了跨平台的文件的访问操作。</p>
+<p>但是Java只不过是实现了对文件操作的封装而已，最终读写文件的实现都是通过调用native方法实现的。</p>
+<p>不过需要特别注意一下几点：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">并不是所有的文件操作都在java.io.FileSystem中定义,</span><br><span class="line"></span><br><span class="line">文件的读取最终调用的是java.io.FileInputStream#read0、readBytes、java.io.RandomAccessFile#read0、readBytes,</span><br><span class="line"></span><br><span class="line">而写文件调用的是java.io.FileOutputStream#writeBytes、java.io.RandomAccessFile#write0。</span><br></pre></td></tr></table></figure>
+<p>简单的解读:</p>
+<ol>
+<li>Java 文件操作的封装与底层调用<br>Java 通过 java.io.FileInputStream、java.io.FileOutputStream 和 java.io.RandomAccessFile 等类提供文件读写的 API。<br>然而，这些文件操作的实现实际上是通过 本地方法（native methods）与操作系统进行交互的。<br>例如：java.io.FileInputStream#read0 和 java.io.RandomAccessFile#read0 方法内部是通过本地代码实现文件读取。<br>这些本地方法通常是通过 JNI（Java Native Interface）或直接调用操作系统的底层 API 来执行文件的读取和写入操作。</li>
+<li>Java 中的两类文件系统 API<br>Java 中的文件操作 API 可以分为两类：</li>
+</ol>
+<p>基于阻塞模式的 I&#x2F;O 文件系统（传统的 I&#x2F;O）：</p>
+<p>这类文件操作是基于传统的阻塞 I&#x2F;O 模型，Java 通过 java.io 包中的类（如 FileInputStream、FileOutputStream）来提供文件读写操作。<br>在传统的阻塞 I&#x2F;O 中，当一个线程正在执行 I&#x2F;O 操作时（例如读取文件），该线程会被阻塞，直到 I&#x2F;O 操作完成才会继续执行。<br>阻塞模式 I&#x2F;O：例如，FileInputStream.read() 和 FileOutputStream.write() 操作会阻塞调用线程，直到数据读取完成或写入完成。<br>基于 NIO.2 的文件系统（Java 7+）：</p>
+<p>从 Java 7 开始，Java 引入了 NIO.2（New I&#x2F;O 2），其主要特点是非阻塞 I&#x2F;O 和文件系统操作的改进。NIO.2 通过 java.nio.file 包提供了更高效的文件 I&#x2F;O 操作。<br>NIO.2 支持 非阻塞 I&#x2F;O，即在执行文件操作时，线程不必等待操作完成，可以继续执行其他任务。这是通过引入 通道（Channel） 和 选择器（Selector） 等机制来实现的。<br>NIO.2 提供了更强大的功能，比如文件路径操作（Path）、文件访问权限操作、异步文件 I&#x2F;O 等。<br>3. 传统阻塞 I&#x2F;O vs NIO.2<br>传统阻塞 I&#x2F;O：对于 FileInputStream 和 FileOutputStream，这些类的 I&#x2F;O 操作是基于阻塞模式的，即线程在执行文件读写时会被阻塞，直到操作完成。这种方式简单，但在处理大量 I&#x2F;O 操作时效率较低，因为线程可能会在等待 I&#x2F;O 完成时处于闲置状态。<br>NIO.2（非阻塞 I&#x2F;O）：Java 7+ 的 NIO.2 提供了更加高效的文件操作 API，并引入了 java.nio.file.Files 和 java.nio.file.Path 等类，可以更加灵活地操作文件、目录等资源。NIO.2 的优势是它支持非阻塞 I&#x2F;O，这意味着应用程序可以在执行文件操作时，继续处理其他任务，而不必等待文件操作完成。</p>
+<p>NIO的文件操作在不同的系统的最终实现类也是不一样的，比如Mac的实现类是: sun.nio.fs.UnixNativeDispatcher,而Windows的实现类是sun.nio.fs.WindowsNativeDispatcher。</p>
+<p>合理的利用NIO文件系统这一特性我们可以绕过某些只是防御了java.io.FileSystem的WAF&#x2F;RASP。</p>
+<h3 id="Java-IO-NIO多种读写文件方式"><a href="#Java-IO-NIO多种读写文件方式" class="headerlink" title="Java IO&#x2F;NIO多种读写文件方式"></a>Java IO&#x2F;NIO多种读写文件方式</h3><p>java.io.FileInputStream类提供了对文件的读取功能，Java的其他读取文件的方法基本上都是封装了java.io.FileInputStream类，比如：java.io.FileReader</p>
+<p>使用FileInputStream实现文件读取Demo:<br><img src="/./img/Snipaste_2025-03-25_13-47-26.png"><br>成功读取到文件</p>
+<p>调用链如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">java.io.FileInputStream.readBytes(FileInputStream.java:219)</span><br><span class="line">java.io.FileInputStream.read(FileInputStream.java:233)</span><br><span class="line">com.anbai.sec.filesystem.FileInputStreamDemo.main(FileInputStreamDemo.java:27)</span><br></pre></td></tr></table></figure>
+
+<p>写文件Demo:<br><img src="/./img/Snipaste_2025-03-25_13-56-10.png"><br>代码逻辑比较简单: 打开文件-&gt;写内容-&gt;关闭文件，调用链和底层实现分析请参考FileInputStream</p>
+<h3 id="Java-文件名空字节截断漏洞"><a href="#Java-文件名空字节截断漏洞" class="headerlink" title="Java 文件名空字节截断漏洞"></a>Java 文件名空字节截断漏洞</h3><p>空字节截断漏洞在很多语言都存在，究其根本是java在调用文件系统（C实现）读写文件是导致的漏洞，并不是java本身的安全问题，高版本的jdk已经处理了这个问题。</p>
+<p>修复前(Java SE 7 Update 25)和修复后(Java SE 7 Update 40)的对比会发现Java SE 7 Update 25中的java.io.File类中并未添加\u0000的检测。</p>
+<p><code>漏洞利用场景</code></p>
+<p><img src="/./img/Snipaste_2025-03-26_01-03-08.png"><br><img src="/./img/Snipaste_2025-03-26_01-05-16.png"></p>
+<p>截断成功</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">shallot</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/03/26/java_0325/">http://example.com/2025/03/26/java_0325/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">shallot's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/java%E5%AE%89%E5%85%A8/">java安全</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/03/25/java_0324/" title="java 反射机制学习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">java 反射机制学习</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2025/03/25/java_0324/" title="java 反射机制学习"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-25</div><div class="title">java 反射机制学习</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">shallot</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">java学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#sun-misc-Unsafe"><span class="toc-number">1.1.</span> <span class="toc-text">sun.misc.Unsafe</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96Unsafe%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.1.1.</span> <span class="toc-text">如何获取Unsafe对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F%E4%B8%80%EF%BC%9A"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">调用方式一：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E6%96%B9%E5%BC%8F%E4%BA%8C%EF%BC%9A"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">调用方式二：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#allocateInstance%E6%97%A0%E8%A7%86%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E5%88%9B%E5%BB%BA%E7%B1%BB%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.1.2.</span> <span class="toc-text">allocateInstance无视构造方法创建类实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.2.</span> <span class="toc-text">java文件系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-IO-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.2.1.</span> <span class="toc-text">Java IO 文件系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-IO-NIO%E5%A4%9A%E7%A7%8D%E8%AF%BB%E5%86%99%E6%96%87%E4%BB%B6%E6%96%B9%E5%BC%8F"><span class="toc-number">1.2.2.</span> <span class="toc-text">Java IO&#x2F;NIO多种读写文件方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Java-%E6%96%87%E4%BB%B6%E5%90%8D%E7%A9%BA%E5%AD%97%E8%8A%82%E6%88%AA%E6%96%AD%E6%BC%8F%E6%B4%9E"><span class="toc-number">1.2.3.</span> <span class="toc-text">Java 文件名空字节截断漏洞</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/26/java_0325/" title="java 文件安全">java 文件安全</a><time datetime="2025-03-25T17:09:11.982Z" title="发表于 2025-03-26 01:09:11">2025-03-26</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/25/java_0324/" title="java 反射机制学习">java 反射机制学习</a><time datetime="2025-03-24T16:13:50.300Z" title="发表于 2025-03-25 00:13:50">2025-03-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/03/10/certify/" title="春秋云镜 Certify">春秋云镜 Certify</a><time datetime="2025-03-10T13:50:16.362Z" title="发表于 2025-03-10 21:50:16">2025-03-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/12/10/%E7%AC%AC%E4%B8%80%E6%AC%A1%E6%B8%97%E9%80%8F/" title="春秋云镜 initial">春秋云镜 initial</a><time datetime="2024-12-10T11:02:46.493Z" title="发表于 2024-12-10 19:02:46">2024-12-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2024/05/28/ciscn_web/" title="CISCN">CISCN</a><time datetime="2024-05-28T11:24:11.208Z" title="发表于 2024-05-28 19:24:11">2024-05-28</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By shallot</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
