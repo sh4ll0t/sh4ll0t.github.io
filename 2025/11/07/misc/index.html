@@ -1,0 +1,336 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>misc学习笔记 | shallot's blog</title><meta name="author" content="shallot"><meta name="copyright" content="shallot"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="misc知识点的简单总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="misc学习笔记">
+<meta property="og:url" content="http://example.com/2025/11/07/misc/index.html">
+<meta property="og:site_name" content="shallot&#39;s blog">
+<meta property="og:description" content="misc知识点的简单总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2025-11-07T05:42:10.016Z">
+<meta property="article:modified_time" content="2025-11-07T05:41:28.426Z">
+<meta property="article:author" content="shallot">
+<meta property="article:tag" content="CTF misc">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2025/11/07/misc/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'misc学习笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2025-11-07 13:41:28'
+}</script><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+        if (t === 'dark') activateDarkMode()
+        else if (t === 'light') activateLightMode()
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><meta name="generator" content="Hexo 7.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="shallot's blog"><span class="site-name">shallot's blog</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">misc学习笔记</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-07T05:42:10.016Z" title="发表于 2025-11-07 13:42:10">2025-11-07</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-11-07T05:41:28.426Z" title="更新于 2025-11-07 13:41:28">2025-11-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="misc学习笔记"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="misc学习笔记"><a href="#misc学习笔记" class="headerlink" title="misc学习笔记"></a>misc学习笔记</h1><p>省赛组队之后感觉team里面可以来点数据安全和misc，之前也学过一些，这段时间就系统的学习一下，以下内容仅仅是个人学习！！并且也可以当作不出网参考材料</p>
+<p>一举两得desuwa</p>
+<p>题外话（省赛加油哇哇哇哇！！！！</p>
+<h2 id="隐写"><a href="#隐写" class="headerlink" title="隐写"></a>隐写</h2><p>这个其实之前已经学过了，很多东西大概都过一遍，再记录一下怎么装工具叭～</p>
+<p>主要参考了这几篇文章，写的相当不错</p>
+<p><code>https://cloud.tencent.com/developer/article/2130795</code></p>
+<p><code>https://forum.butian.net/share/340</code></p>
+<h3 id="常见文件头总结"><a href="#常见文件头总结" class="headerlink" title="常见文件头总结"></a>常见文件头总结</h3><p>文件类型大部分是由文件头决定的，这也是经常出题的一点。查看文件头的话可以用010editer<br><img src="/./img/Snipaste_2025-10-14_20-55-29.png"></p>
+<p>比如这个就是一个png文件</p>
+<p>总结一下常见的文件头（老图）：<br><img src="/./img/Snipaste_2025-10-14_21-22-59.png"></p>
+<h3 id="图片隐写"><a href="#图片隐写" class="headerlink" title="图片隐写"></a>图片隐写</h3><h4 id="1、附加式的图片隐写"><a href="#1、附加式的图片隐写" class="headerlink" title="1、附加式的图片隐写"></a>1、附加式的图片隐写</h4><p>（1）附加字符串</p>
+<p>操作系统识别，从文件头标志，到文件的结束标志位<br>当系统识别到图片的结束标志位后，默认是不再继续识别的<br>所以可以在文件尾后面加东西，这种算是比较基础的，010翻到最底下就能看见了。</p>
+<p>（2）隐藏压缩文件</p>
+<p>可以把压缩文件藏在图片文件尾后，看起来还是图片。</p>
+<p>解决方法就是<code>binwalk -e xxx.jpg</code></p>
+<p>（3）EXIF隐写</p>
+<p>就是在图片属性切换详细信息可以查看exif备注，一般出现在jpg的格式图片上。</p>
+<p>还有一个exiftool的工具，使用方法是 exiftool xxx.jpg<br><img src="/./img/Snipaste_2025-10-14_21-12-54.png"></p>
+<h4 id="2、基于文件结构的图片隐写"><a href="#2、基于文件结构的图片隐写" class="headerlink" title="2、基于文件结构的图片隐写"></a>2、基于文件结构的图片隐写</h4><p>主要是针对PNG图片</p>
+<p>标准的PNG文件结构应包括：<br>PNG文件标志<br>PNG数据块：关键数据块和辅助数据块，其中正常的关键数据块有长度、数据块类型码、数据块数据和CRC这4种<br>（1）png图片文件头数据块（IHDR）<br>PNG图片的第一个数据块</p>
+<p>一张PNG图片仅有一个IHDR数据块<br>包括了图片的宽，高，图像深度，颜色类型，压缩方法等信息</p>
+<p>省流就是可以修改图片长宽隐藏一些内容，我大一的时候整理了一个脚本，可以计算图片原本尺寸：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> binascii</span><br><span class="line"><span class="keyword">import</span> struct</span><br><span class="line"></span><br><span class="line">crcbp = <span class="built_in">open</span>(<span class="string">&quot;xxx.png&quot;</span>, <span class="string">&quot;rb&quot;</span>).read()    <span class="comment">#打开图片</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2000</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2000</span>):</span><br><span class="line">        data = crcbp[<span class="number">12</span>:<span class="number">16</span>] + \</span><br><span class="line">            struct.pack(<span class="string">&#x27;&gt;i&#x27;</span>, i)+struct.pack(<span class="string">&#x27;&gt;i&#x27;</span>, j)+crcbp[<span class="number">24</span>:<span class="number">29</span>]</span><br><span class="line">        crc32 = binascii.crc32(data) &amp; <span class="number">0xffffffff</span></span><br><span class="line">        <span class="keyword">if</span>(crc32 == <span class="number">0x38162a34</span>):    <span class="comment">#图片当前CRC</span></span><br><span class="line">            <span class="built_in">print</span>(i, j)</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;hex:&#x27;</span>, <span class="built_in">hex</span>(i), <span class="built_in">hex</span>(j))</span><br></pre></td></tr></table></figure>
+<p>然后去010editer改掉就好了<br>如何查看png长宽和CRC值：</p>
+<p>先加载png模板：<br><img src="/./img/Snipaste_2025-10-15_13-59-38.png"><br>然后在view查看结果：<br><img src="/./img/Snipaste_2025-10-15_13-59-24.png"><br>（2）IDAT 数据块<br>在数据流中可包含多个连续顺序的图像数据块，写入一个多余的IDAT也不会多大影响肉眼对图片的观察<br>识别方法:<br>用pngcheck对图片进行检测pngcheck -v hidden.png</p>
+<p>可能会出现一个size为0的异常块</p>
+<p>这时候使用脚本提取内容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> struct <span class="keyword">import</span> unpack</span><br><span class="line"><span class="keyword">from</span> binascii <span class="keyword">import</span> hexlify, unhexlify</span><br><span class="line"><span class="keyword">import</span> sys, zlib</span><br><span class="line"></span><br><span class="line"><span class="comment"># Returns [Position, Chunk Size, Chunk Type, Chunk Data, Chunk CRC]</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">getChunk</span>(<span class="params">buf, pos</span>):</span><br><span class="line">    a = []</span><br><span class="line">    a.append(pos)</span><br><span class="line">    size = unpack(<span class="string">&#x27;!I&#x27;</span>, buf[pos:pos+<span class="number">4</span>])[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># Chunk Size</span></span><br><span class="line">    a.append(buf[pos:pos+<span class="number">4</span>])</span><br><span class="line">    <span class="comment"># Chunk Type</span></span><br><span class="line">    a.append(buf[pos+<span class="number">4</span>:pos+<span class="number">8</span>])</span><br><span class="line">    <span class="comment"># Chunk Data</span></span><br><span class="line">    a.append(buf[pos+<span class="number">8</span>:pos+<span class="number">8</span>+size])</span><br><span class="line">    <span class="comment"># Chunk CRC</span></span><br><span class="line">    a.append(buf[pos+<span class="number">8</span>+size:pos+<span class="number">12</span>+size])</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">printChunk</span>(<span class="params">buf, pos</span>):</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Pos : &#x27;</span>+<span class="built_in">str</span>(pos)+<span class="string">&#x27;&#x27;</span></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Type: &#x27;</span> + <span class="built_in">str</span>(buf[pos+<span class="number">4</span>:pos+<span class="number">8</span>])</span><br><span class="line">    size = unpack(<span class="string">&#x27;!I&#x27;</span>, buf[pos:pos+<span class="number">4</span>])[<span class="number">0</span>]</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Size: &#x27;</span> + <span class="built_in">str</span>(size)</span><br><span class="line">    <span class="comment">#print &#x27;Cont: &#x27; + str(hexlify(buf[pos+8:pos+8+size]))</span></span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;CRC : &#x27;</span> + <span class="built_in">str</span>(hexlify(buf[pos+size+<span class="number">8</span>:pos+size+<span class="number">12</span>]).upper())</span><br><span class="line">    <span class="built_in">print</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">len</span>(sys.argv)!=<span class="number">2</span>:</span><br><span class="line">    <span class="built_in">print</span> <span class="string">&#x27;Usage: ./this Stegano_PNG&#x27;</span></span><br><span class="line">    sys.exit(<span class="number">2</span>)</span><br><span class="line"></span><br><span class="line">buf = <span class="built_in">open</span>(sys.argv[<span class="number">1</span>]).read()</span><br><span class="line">pos=<span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;PNG Signature: &quot;</span> + <span class="built_in">str</span>(unpack(<span class="string">&#x27;cccccccc&#x27;</span>, buf[pos:pos+<span class="number">8</span>]))</span><br><span class="line">pos+=<span class="number">8</span></span><br><span class="line"></span><br><span class="line">chunks = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">3</span>):</span><br><span class="line">    chunks.append(getChunk(buf, pos))</span><br><span class="line">    printChunk(buf, pos)</span><br><span class="line">    pos+=unpack(<span class="string">&#x27;!I&#x27;</span>,chunks[i][<span class="number">1</span>])[<span class="number">0</span>]+<span class="number">12</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">decompressed = zlib.decompress(chunks[<span class="number">1</span>][<span class="number">3</span>])</span><br><span class="line"><span class="comment"># Decompressed data length = height x (width * 3 + 1)</span></span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;Data length in PNG file : &quot;</span>, <span class="built_in">len</span>(chunks[<span class="number">1</span>][<span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span> <span class="string">&quot;Decompressed data length: &quot;</span>, <span class="built_in">len</span>(decompressed)</span><br><span class="line"></span><br><span class="line">height = unpack(<span class="string">&#x27;!I&#x27;</span>,(chunks[<span class="number">0</span>][<span class="number">3</span>][<span class="number">4</span>:<span class="number">8</span>]))[<span class="number">0</span>]</span><br><span class="line">width = unpack(<span class="string">&#x27;!I&#x27;</span>,(chunks[<span class="number">0</span>][<span class="number">3</span>][:<span class="number">4</span>]))[<span class="number">0</span>]</span><br><span class="line">blocksize = width * <span class="number">3</span> + <span class="number">1</span></span><br><span class="line">filterbits = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">0</span>,<span class="built_in">len</span>(decompressed),blocksize):</span><br><span class="line">    bit = unpack(<span class="string">&#x27;2401c&#x27;</span>, decompressed[i:i+blocksize])[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> bit == <span class="string">&#x27;\x00&#x27;</span>: filterbits+=<span class="string">&#x27;0&#x27;</span></span><br><span class="line">    <span class="keyword">elif</span> bit == <span class="string">&#x27;\x01&#x27;</span>: filterbits+=<span class="string">&#x27;1&#x27;</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="built_in">print</span> <span class="string">&#x27;Bit is not 0 or 1... Default is 0 - MAGIC!&#x27;</span></span><br><span class="line">        sys.exit(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">s = filterbits</span><br><span class="line">endianess_filterbits = [filterbits[i:i+<span class="number">8</span>][::-<span class="number">1</span>] <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">0</span>, <span class="built_in">len</span>(filterbits), <span class="number">8</span>)]</span><br><span class="line"></span><br><span class="line">flag = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> endianess_filterbits:</span><br><span class="line">    <span class="keyword">if</span> x==<span class="string">&#x27;00000000&#x27;</span>: <span class="keyword">break</span></span><br><span class="line">    flag += unhexlify(<span class="string">&#x27;%x&#x27;</span> % <span class="built_in">int</span>(<span class="string">&#x27;0b&#x27;</span>+<span class="built_in">str</span>(x), <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span> <span class="string">&#x27;Flag: &#x27;</span> + flag</span><br></pre></td></tr></table></figure>
+<p>python solve.py stegano_image.png</p>
+<h4 id="3、LSB隐写"><a href="#3、LSB隐写" class="headerlink" title="3、LSB隐写"></a>3、LSB隐写</h4><p>LSB，最低有效位，英文是Least Significant Bit,容量大、嵌入速度快、对载体图像质量影响小.在PNG和BMP上可以实现<br>原理:图片中的像素一般是由三种颜色组成，即三原色(红绿蓝)，由这三种原色可以组成其他各种颜色,在png图片的存储中,每个颜色占有8bit,即有256种颜色，一共包含256的三次方颜色，即16777216种颜色,人类的眼睛可以区分约1,000万种不同的颜色，剩下无法区分的颜色就有6777216,LSB隐写就是修改了像素中的最低位，把一些信息隐藏起来</p>
+<p>方法：stegsolve<br>俺本地的：java -jar StegSolve-1.5-alpha1.jar<br><img src="/./img/Snipaste_2025-10-14_22-33-54.png"></p>
+<p>还学到一手新的工具<br>zsteg a.png           # 查看 LSB 信息</p>
+<p>zsteg a.png –a       # 尝试所有组合</p>
+<p>zsteg a.png –v       # 显示细节</p>
+<h4 id="4、对于两张相同图片的隐写"><a href="#4、对于两张相同图片的隐写" class="headerlink" title="4、对于两张相同图片的隐写"></a>4、对于两张相同图片的隐写</h4><p>（1）盲水印<br>数字水印（digital watermark）</p>
+<p>在数字化的数据内容中嵌入不明显的记号，被嵌入的记号通常是不可见或不可察的，可以通过计算操作检测或者提取</p>
+<p>一般特征是题目提供了两张看起来一样的照片。</p>
+<p>解决方法： <code>https://github.com/chishaxie/BlindWaterMark.git。</code></p>
+<p>用法：<code>python bwmforpy3.py decode hui.png hui_wm_py3.png wm_out_py3.png</code><br>（2）组合进行不同运算（and、or、xor等）</p>
+<p>还是用stegsolve，点击<br><img src="/./img/Snipaste_2025-10-14_23-11-43.png"></p>
+<p>之后会再让你打开一张图片，此时需要注意两张图片的打开顺序不同，运算的结果也不同，实际操作中就需要各位来回试一下了</p>
+<h3 id="文档隐写"><a href="#文档隐写" class="headerlink" title="文档隐写"></a>文档隐写</h3><h4 id="1、隐藏文字（mac版）"><a href="#1、隐藏文字（mac版）" class="headerlink" title="1、隐藏文字（mac版）"></a>1、隐藏文字（mac版）</h4><p>点击屏幕左上角的苹果 logo 旁边的“Word”菜单。在下拉菜单中选择“偏好设置.”，“视图”(View)。“显示非打印字符”区域，找到并勾选“隐藏文字”(Hidden text) 选项。就可以接触隐藏文字。</p>
+<h4 id="2、通过解压文档进行隐藏："><a href="#2、通过解压文档进行隐藏：" class="headerlink" title="2、通过解压文档进行隐藏："></a>2、通过解压文档进行隐藏：</h4><p>由于 docx 文件实质上也是一种压缩包文件，可以对其改后缀为 zip 进行解压，逐一查看里面的文件是否隐藏了敏感信息。具体特征就就是一个过大的docx文件。</p>
+<h4 id="3、PDF隐写"><a href="#3、PDF隐写" class="headerlink" title="3、PDF隐写"></a>3、PDF隐写</h4><p>wbStego43open 会将插入的数据中每一个 ASCII 码转换为二进制形式，并将其中的 0 替换成十六进制的 20，1 替换成十六进制的 09，最终将这些转换后的十六进制数据嵌入到 PDF 文件中。所以如果利用十六进制编辑器打开某个 PDF 文件，发现混入了许多由 20 和 09 组成的字符，可以猜测该文件存在 PDF 隐写。使用 wbStego43open 工具的 Decode 模块进行解密。可能会需要密码，下载地址：<code>http://www.bailer.at/wbstego/</code>（只有windows）</p>
+<h4 id="4、零宽隐写"><a href="#4、零宽隐写" class="headerlink" title="4、零宽隐写"></a>4、零宽隐写</h4><p>零宽字符是一些不可见的，不可打印的字符。零宽隐写工具:<br><code>https://330k.github.io/misc_tools/unicode_steganography.htmlhttps://330k.github.io/misc_tools/unicode_steganography.html</code></p>
+<h4 id="5、NTFS流隐写"><a href="#5、NTFS流隐写" class="headerlink" title="5、NTFS流隐写"></a>5、NTFS流隐写</h4><p>NTFS数据流文件也被称为 Alternate data streams，简称ADS，是NTFS文件系统的一个特性之一，允许单独的数据流文件存在，同时也允许文件附着多个数据流，除了主文件流之外还允许许多非主文件流寄生在主文件流中，使用资源派生的方式来维持与文件的相关信息，并且这些寄生的数据流文件我们使用资源管理器无法看到。<br>注意一个点就是：WinRAR是支持NTFS数据流压缩的，如果使用不支持NTFS数据流压缩的软件进行解压，会丢失隐藏的数据，因此这个题目提示使用WinRAR打开。</p>
+<p>做法：<code>https://www.nirsoft.net/utils/alternate_data_streams.html</code>(只有windows)下载扫描解压出来的rar目录。</p>
+<h3 id="音频隐写"><a href="#音频隐写" class="headerlink" title="音频隐写"></a>音频隐写</h3><h4 id="摩斯电码"><a href="#摩斯电码" class="headerlink" title="摩斯电码"></a>摩斯电码</h4><p>这个不多说了，特征就是打开有嘟嘟哒哒和电报一样的声音。音频隐写常使用 Audacity工具。<br>下载地址：<code>(https://www.audacityteam.org/download/mac/)</code></p>
+<h4 id="MP3音频隐写"><a href="#MP3音频隐写" class="headerlink" title="MP3音频隐写"></a>MP3音频隐写</h4><p>MP3stego 是著名的音频数据隐写工具。<br>支持常见的压缩音频文件格式如 mp3 的数据嵌入，它采用的是一种特殊的量化方法，并且将数据隐藏在 mp3 文件的奇偶校验块中。</p>
+<p>下载地址:<code>https://www.petitcolas.net/steganography/mp3stego/</code><br>（依旧只有windows，mac就别和misc沾边了好吗？）</p>
+<p>使用该工具的 decode 命令进行对 sound.mp3 文件解密，会得到一个 sound.mp3.txt 文件，该文件里的信息即为被隐写的 data.txt 文件的内容。</p>
+<h4 id="波形图"><a href="#波形图" class="headerlink" title="波形图"></a>波形图</h4><p>通常来说对于音频中的波形图题目，在使用相关软件（Audacity, Adobe Audition 等）进行观察其波形规律，将波形进一步转化为 01 字符串等，从而提取转化出最终的 flag。可以利用python 代码将 01 字符串按照 7 位一组转成 ASCII 码，得到最终 flag。</p>
+<h4 id="频谱图"><a href="#频谱图" class="headerlink" title="频谱图"></a>频谱图</h4><p>音频中的频谱隐写是将字符串隐藏在频谱中，此类音频通常会有一个较为明显的特征，听起来是一段杂音或者声音比较刺耳。</p>
+<p>使用 Audacity 工具打开选择频谱图进行分析，没准可以直接看到flag。</p>
+<h3 id="视频隐写"><a href="#视频隐写" class="headerlink" title="视频隐写"></a>视频隐写</h3><p>视频隐写中最常见的就是将关键信息藏在某一帧或者某几帧中，所以我们要想拿到隐藏的信息可以将视频转换成图片。</p>
+<p>常用工具：VideotoPicture、ffmpeg。这里我VideotoPicture没找到很好用的安装包，就brew install ffmpeg了，用法是：<code>ffmpeg -i xxx.mp4 -r 30 %3d.jpg</code></p>
+<h2 id="压缩包相关"><a href="#压缩包相关" class="headerlink" title="压缩包相关"></a>压缩包相关</h2><h3 id="加密手段"><a href="#加密手段" class="headerlink" title="加密手段"></a>加密手段</h3><p>一般可以将加密手段分为三种：未加密、真加密和伪加密。</p>
+<p>未加密时，压缩文件数据区中的通用位标记应为 0000，并且压缩源文件目录区的通用位标记也为 0000，我们可以直接进行解压得到压缩包里面的内容。</p>
+<p>真加密时，压缩文件数据区中的通用位标记应为 0900，并且压缩源文件目录区的通用位标记也为 0900，我们无法直接解压，需要输入正确的压缩包密码才能完成解压。</p>
+<p><img src="/./img/Snipaste_2025-10-16_17-17-02.png"></p>
+<p>伪加密时，压缩文件数据区中的通用位标记的值无所谓，重点是压缩源文件目录区的通用位标记得存在奇数的情况，例如 0900，0100等，此时我们无法直接打开文件，且压缩包也不存在真正的密码，需要手动修改其标志位。</p>
+<p><img src="/./img/Snipaste_2025-10-16_17-19-29.png"></p>
+<h4 id="zip-伪加密破解"><a href="#zip-伪加密破解" class="headerlink" title="zip 伪加密破解"></a>zip 伪加密破解</h4><ol>
+<li><p>修改压缩源文件目录区的通用位标记为偶数即可。</p>
+</li>
+<li><p>直接放入 Linux 系统中，伪加密的文件是可以直接打开的，并不用输入密码。</p>
+</li>
+</ol>
+<p><img src="/./img/Snipaste_2025-10-16_17-22-17.png"></p>
+<h4 id="rar-伪加密破解"><a href="#rar-伪加密破解" class="headerlink" title="rar 伪加密破解"></a>rar 伪加密破解</h4><p>RAR 文件由于有头部校验，使用伪加密时打开文件会出现报错，修改标志位后如果报错消失且正常解压缩，说明就是伪加密。</p>
+<p><img src="/./img/Snipaste_2025-10-16_17-30-48.png"></p>
+<h4 id="暴力破解"><a href="#暴力破解" class="headerlink" title="暴力破解"></a>暴力破解</h4><p>暴力破解即通过枚举的方式，将所有可能的情况都进行尝试。</p>
+<p>常用工具：ARCHPR、Ziperello。</p>
+<p>Ziperello 主要用于破解 ZIP 格式的压缩包。</p>
+<p>ARCHPR 可以对多种压缩格式文件的密码进行破解。</p>
+<p>(都是只有windows版本，之前都用过不多赘述了)</p>
+<p>当使用纯数字没有破解出来时，可以增加英文字母，不过长度需要调小一点。<br>破解五位的数字加大小写字母时耗时预计 40 秒左右，六位时则需要 30 分钟左右。在 CTF 比赛中如果没有任何有关密码的提示，我们就可以尝试使用暴力破解去获取压缩包的密码。</p>
+<h4 id="字典攻击"><a href="#字典攻击" class="headerlink" title="字典攻击"></a>字典攻击</h4><p>比赛中如果存在对密码的提示，我们会优先采用字典破解的方式。</p>
+<h4 id="掩码攻击"><a href="#掩码攻击" class="headerlink" title="掩码攻击"></a>掩码攻击</h4><p>如果已知密码的某几位，如已知 7 位密码中的第 3 位为 b，第 6 位为 c ，那么可以构造 ??b??c? 进行掩码攻击。<br>掩码攻击的原理相当于构造了第 3 位为 b，第 6 位为 c 的字典，因此掩码攻击的效率也比爆破高出不少。</p>
+<h4 id="明文攻击"><a href="#明文攻击" class="headerlink" title="明文攻击"></a>明文攻击</h4><p>我们对压缩文件设置密码时，密码首先被转换成 3 个 32bit 的 key，所有可能的 key 的组合就有 296 种，所以如果想要通过枚举的方式来破解这 3 个 key 的话基本上是不可能的。接着压缩软件会用生成的 3 个 key 加密压缩包中的所有文件。</p>
+<p>如果我们能得到其中一个被加密的文件，就可以通过相同的压缩方式进行压缩，压缩完后与带密码的压缩包进行比对。找出两个文件的不同点，就是我们需要找的 key 了。</p>
+<p>当然我们不需要做这么多麻烦的工作，在 ARCHPR 中有明文攻击这个功能，我们只需要填入两个压缩文件即可。</p>
+<p>明文攻击是一种较为高效的攻击手段，我们不知道一个压缩包的密码，但是有此压缩包中的一个已知文件（文件需大于12Byte）时，因为同一个压缩包里的所有文件都是使用同一个加密密钥来加密的，所以可以用已知文件来找加密密钥，利用密钥来解锁其他加密文件。</p>
+<p>注意：明文对应文件的加密算法得是 ZipCrypto Store 或是 ZipCrypto Deflate。</p>
+<h5 id="情景一：密码不难，可直接获得"><a href="#情景一：密码不难，可直接获得" class="headerlink" title="情景一：密码不难，可直接获得"></a>情景一：密码不难，可直接获得</h5><p><img src="/./img/Snipaste_2025-10-16_17-59-16.png"></p>
+<h5 id="情景二：密码很难，即使没有得到密码，只要得到下图框中的三个密钥，即可解密文件"><a href="#情景二：密码很难，即使没有得到密码，只要得到下图框中的三个密钥，即可解密文件" class="headerlink" title="情景二：密码很难，即使没有得到密码，只要得到下图框中的三个密钥，即可解密文件"></a>情景二：密码很难，即使没有得到密码，只要得到下图框中的三个密钥，即可解密文件</h5><p><img src="/./img/Snipaste_2025-10-16_18-00-33.png"></p>
+<h4 id="CRC32碰撞"><a href="#CRC32碰撞" class="headerlink" title="CRC32碰撞"></a>CRC32碰撞</h4><p>CRC 全称 Cyclic Redundancy Check（循环冗余校验），是为了保证数据正确采用的一种检错手段。</p>
+<p>压缩包中的每个文件都有一个 CRC32 值，当文件中的内容改变时，它的 CRC32 的值也会随之改变。</p>
+<p>枚举的方式在一定的长度内是可行的，所以长度很长的话，这种方法也就失效了。</p>
+<p>例如一个文件，内容长度只有 4 字节，可以看到它的 CRC32 的值为 0x6526B899。我们可以利用脚本去遍历所有四位数字符串的 CRC32 值，如果和 a.txt 的 CRC32 相同，那么就能断定这个字符串就是 a.txt 中的内容。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> string,binascii,itertools</span><br><span class="line"> </span><br><span class="line">printable = string.printable</span><br><span class="line">crc32 = <span class="number">0x6526B899</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> itertools.product(printable, repeat=<span class="number">4</span>):</span><br><span class="line">    s = <span class="string">&#x27;&#x27;</span>.join(i)</span><br><span class="line">    <span class="keyword">if</span> crc32 == (binascii.crc32(s.encode()) &amp; <span class="number">0xffffffff</span>):</span><br><span class="line">        <span class="built_in">print</span>(s)</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="流量分析"><a href="#流量分析" class="headerlink" title="流量分析"></a>流量分析</h2><p>主要参考了这篇文章和一些之前题目遇见过的简单知识点：<br><code>https://www.freebuf.com/articles/web/330553.html</code></p>
+<h3 id="wireshark-基础"><a href="#wireshark-基础" class="headerlink" title="wireshark 基础"></a>wireshark 基础</h3><h4 id="常见过滤器规则"><a href="#常见过滤器规则" class="headerlink" title="常见过滤器规则"></a>常见过滤器规则</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">http: 按照 http 协议进行过滤显示</span><br><span class="line"></span><br><span class="line">ip.addr == xxx.xxx.xxx.xxx:按照 ip 地址为 xxx.xxx.xxx.xxx 的进行过滤显示</span><br><span class="line"></span><br><span class="line">http contains &quot;XXX&quot;:按照 http 协议且内容含有 XXX 的进行过滤显示</span><br><span class="line"></span><br><span class="line">http.request.method == &quot;get&quot;:按照 POST 请求的 http 协议进行过滤显示</span><br><span class="line"></span><br><span class="line">http &amp;&amp; ip.dst == xxx.xxx.xxx.xxx:按照 http 协议且 ip 目的地址为 xxx.xxx.xxx.xxx进行组合过滤显示</span><br></pre></td></tr></table></figure>
+<h4 id="常见操作"><a href="#常见操作" class="headerlink" title="常见操作"></a>常见操作</h4><p>追踪：<br><img src="/./img/Snipaste_2025-10-19_14-54-43.png"><br>导出：<br><img src="/./img/Snipaste_2025-10-19_14-58-52.png"></p>
+<h3 id="蚁剑-AntSword"><a href="#蚁剑-AntSword" class="headerlink" title="蚁剑(AntSword)"></a>蚁剑(AntSword)</h3><p>这里用 <code>BUU UPLOAD COURSE 1 </code>抓包先上手看看～</p>
+<p>上传php文件之后，用蚁剑连接，打开监听之后在打开终端执行一些命令<br><img src="/./img/Snipaste_2025-10-17_10-45-52.png"></p>
+<p>蚁剑流量特征较为明显：</p>
+<ol>
+<li><p>请求内容中参数有一些 14 字节长度的 16 进制字符；</p>
+</li>
+<li><p>响应内容中开头和结尾有随机 4-16 字节长度的 16 进制字符；</p>
+</li>
+<li><p>若流量经过编码的话，会有 eval、assert、base64、chr 等字符。</p>
+</li>
+<li><p>解密后的请求内容中会有 asenc、asoutput 等字符</p>
+</li>
+</ol>
+<p><img src="/./img/Snipaste_2025-10-17_10-58-18.png"></p>
+<h3 id="哥斯拉-Godzilla"><a href="#哥斯拉-Godzilla" class="headerlink" title="哥斯拉(Godzilla)"></a>哥斯拉(Godzilla)</h3><p>下载地址：<code>https://github.com/BeichenDream/Godzilla/releases</code></p>
+<p>1.使用 Godzilla 生成 shell 文件<br><img src="/./img/Snipaste_2025-10-17_16-29-29.png"><br>2.上传 shell 文件到服务端</p>
+<p>3.使用 Godzilla 管理 webshell<br><img src="/./img/Snipaste_2025-10-17_16-41-58.png"></p>
+<p>Godzilla流量的特征有：</p>
+<p>1.第一次请求的数据包通常要比后面的数据包要大很多，且其对应的响应内容为空；</p>
+<p>2.响应包内容前后都有 16 字节长度的 16 进制字符；</p>
+<p>3.请求报文里的 Cookie 末尾有个分号(;)；</p>
+<p>4.Accept 字段（弱特征）默认是：Accept: text&#x2F;html,application&#x2F;xhtml+xml,application&#x2F;xml;q&#x3D;0.9,image&#x2F;webp,<em>&#x2F;</em>;q&#x3D;0.8</p>
+<p>在 PHP_EVAL_XOR_BASE64 这种模式的流量的请求报文里可以直接解出 shell 内容，只需要经过“url解码-&gt;逆序字符-&gt;base64解码”即可得到 shell 内容。其内容和 PHP_XOR_BASE64 加密器生成的 shell 一样，因此其解密方式也是一样的。 而 PHP_XOR_RAW 这种模式的流量就只是少了 base64 加密，其他是一样的。</p>
+<p>php实现解密<br>在 PHP_EVAL_XOR_BASE64、PHP_XOR_BASE64 模式下的流量解密：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">php实现解密</span><br><span class="line"> 在 PHP_EVAL_XOR_BASE64、PHP_XOR_BASE64 模式下的流量解密：</span><br><span class="line">``python</span><br><span class="line"><span class="keyword">import</span> gzip,base64</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">encode</span>(<span class="params">D, K</span>):</span><br><span class="line">    res = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(D)):</span><br><span class="line">        c = K[i+<span class="number">1</span>&amp;<span class="number">15</span>]</span><br><span class="line">        res += <span class="built_in">bytes</span>.fromhex(<span class="built_in">hex</span>(D[i]^<span class="built_in">ord</span>(c))[<span class="number">2</span>:].zfill(<span class="number">2</span>))</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 默认密码为 key 的 md5 值前 16 位</span></span><br><span class="line">key=<span class="string">&#x27;xxxx&#x27;</span></span><br><span class="line">a = <span class="string">&#x27;xxx加密信息&#x27;</span></span><br><span class="line">data = a[<span class="number">16</span>:-<span class="number">16</span>].encode()</span><br><span class="line">m = gzip.decompress(encode(base64.b64decode(data), key)).decode()</span><br><span class="line"><span class="built_in">print</span>(m)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>在 PHP_XOR_RAW 这种模式的流量相比于 PHP_EVAL_XOR_BASE64、PHP_XOR_BASE64 模式就只是少了 base64 加密，其他加密操作其实是一样的。因此我们可以先将密文通过 wireshark 的“文件-&gt;导出对象-&gt;HTTP”导出对应的密文文件，再对其进行解密即可。</p>
+<p>在 PHP_XOR_RAW 模式下的流量解密：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> gzip,base64</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">encode</span>(<span class="params">D, K</span>):</span><br><span class="line">    res = <span class="string">b&#x27;&#x27;</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(D)):</span><br><span class="line">        c = K[i+<span class="number">1</span>&amp;<span class="number">15</span>]</span><br><span class="line">        res += <span class="built_in">bytes</span>.fromhex(<span class="built_in">hex</span>(D[i]^<span class="built_in">ord</span>(c))[<span class="number">2</span>:].zfill(<span class="number">2</span>))</span><br><span class="line">    <span class="keyword">return</span> res</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 默认密码为 key 的 md5 值前 16 位</span></span><br><span class="line">key=<span class="string">&#x27;3c6e0b8a9c15224a&#x27;</span></span><br><span class="line">// 通过 wireshark 导出的密文文件 c.<span class="built_in">bin</span></span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;c.bin&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read()</span><br><span class="line">m = gzip.decompress(encode(data, key)).decode()</span><br><span class="line"><span class="built_in">print</span>(m)</span><br></pre></td></tr></table></figure>
+<h3 id="FTP流量分析"><a href="#FTP流量分析" class="headerlink" title="FTP流量分析"></a>FTP流量分析</h3><p>在传输文件时：</p>
+<p>FTP客户端程序先与服务器建立连接，然后向服务器发送命令；服务器收到命令后给予响应，并执行命令。</p>
+<p>如下图所示，可以看到ftp传输的所有信息，FTP是明文形式传输数据包，我们能在info中看到登录FTP的用户名、密码、执行命令等<br>(这里直接用文章的图片代替了)<br><img src="/./img/Snipaste_2025-10-19_15-22-24.png"></p>
+<p>客户端首先与FTP服务器TCP三次握手建立连接，建立连接成 功后，FTP服务器返回状态码220，表示服务就绪。</p>
+<p>FTP服务器返回状态码220 特征： File Transfer Protocol (FTP) 220 Welcome to the FTP Server\r\n Response code: Service ready for new user (220) Response arg: Welcome to the FTP Server<br>向FTP服务器发送登录用户名：ftp并等待验证，用户名验证通过后，FTP 服务器返回状态码331，表示用户名验证已通过并需要输入密码。<br><img src="/./img/Snipaste_2025-10-19_15-23-51.png"></p>
+<p>特征：<br>File Transfer Protocol (FTP) USER ftp\r\n Request command: USER Request arg: ftp 使用了FTP协议，输入的用户名为ftp，请求的命令是USER，请求参数为ftp。</p>
+<p>服务器返回331，用户名验证通过（存在此用户名） File Transfer Protocol (FTP) 331 User name ok, password required\r\n Response code: User name okay, need password (331) Response arg: User name ok, password required</p>
+<p>将登录密码：123456发送给FTP服务器，FTP服务器验证后返回状态码 230，表示用户已经登录。</p>
+<p><img src="/./img/Snipaste_2025-10-19_15-25-02.png"><br>特征：<br>File Transfer Protocol (FTP) PASS 123456\r\n Request command: PASS Request arg: 123456 输入的密码为123456，请求的命令是PASS，请求参数为123456。</p>
+<p>服务器返回230： File Transfer Protocol (FTP) 230 Password ok, continue\r\n Response code: User logged in, proceed (230) Response arg: Password ok, continue</p>
+<p>终端向FTP服务器发送命令，FTP服务器返回状态码 200，表示命令执行成功</p>
+<p>特征：<br>执行命令： File Transfer Protocol (FTP) PWD\r\n Request command: PWD 服务器返回200： File Transfer Protocol (FTP) 200 Connection established (60309)\r\n Response code: Command okay (200) Response arg: Connection established (60309)</p>
+<h3 id="TLS流量分析"><a href="#TLS流量分析" class="headerlink" title="TLS流量分析"></a>TLS流量分析</h3><p>首先TLS握手过程（经典寄网）：<br><img src="/./img/Snipaste_2025-10-19_15-28-43.png"><br>从 TLS 握手过程中可以知道，如果其中的主密钥暴露出来，就相当于能拿到双方协商好的会话密钥，从而可以对被加密的通信内容进行解密。<br>为了拿到主密钥相关内容，我们可以在环境变量里设置“SSLKEYLOGFILE”指向一个文件路径，例如桌面上的 a.log 文件。</p>
+<p>接着启动浏览器访问 https 网址进行一系列操作，同时使用 Wireshark 进行抓包。抓到的数据包内容中 Protocol 字段表现为 TLS 协议。</p>
+<p>此时刚才环境变量里“SSLKEYLOGFILE”所指向的路径已经生成了 a.log 文件，内容包括 TLS 握手过程中的 client random、server random、master secret 和事先商定好的加密方法等信息。<br>要完成对刚才截获的数据包进行解密，我们只需将该文件导入到 Wireshark 中去，即可对 TLS 流量进行解密。其中导入步骤为 编辑 -&gt; 首选项 -&gt; Protocols -&gt; TLS。</p>
+<p>导入 a.log 文件<br><img src="/./img/Snipaste_2025-10-19_15-46-49.png"></p>
+<p>导入完成后，Wireshark 会利用 a.log 文件里的内容计算出通信双方的会话密钥，接着对截获的数据包进行解密，其中“HTTP&#x2F;JSON”协议的即为解密出来的数据报。</p>
+<h2 id="计算机取证"><a href="#计算机取证" class="headerlink" title="计算机取证"></a>计算机取证</h2><p>三种常见的取证场景：磁盘镜像取证、内存镜像取证、流量分析取证。</p>
+<p>磁盘分区方式有多种，Windows下目前比较主流的是 FAT 和 NTFS，Linux下常见文件系统是ext2、ext3、ext4。</p>
+<h3 id="磁盘取证"><a href="#磁盘取证" class="headerlink" title="磁盘取证"></a>磁盘取证</h3><p>工具：DiskGenius</p>
+<p>下载地址：<a target="_blank" rel="noopener" href="https://www.diskgenius.cn/download.php">https://www.diskgenius.cn/download.php</a></p>
+<p>使用方法：首先通过“磁盘-&gt;打开虚拟磁盘文件”功能打开磁盘文件，接着通过“恢复文件”功能可以找到一些已被删除的文件。<br><img src="/./img/Snipaste_2025-10-20_10-40-33.png"><br>extundeleteextundelete是 Linux 文件恢复工具，无图形化界面。 可以恢复 ext3 与 ext4 </p>
+<h3 id="内存取证"><a href="#内存取证" class="headerlink" title="内存取证"></a>内存取证</h3><p>最常用的取证工具之一是 volatility</p>
+<p>安装好之后参考常见用法：<code>https://wiki.wgpsec.org/knowledge/ctf/Volatility.html</code></p>
+<h2 id="二维码"><a href="#二维码" class="headerlink" title="二维码"></a>二维码</h2><p>二维码通常分为堆叠式二维码和矩阵式二维码。</p>
+<p>堆叠式二维条码 (如 PDF417) 是在一维条码的基础上，将多行条码堆叠而成。这种设计继承了一维条码的编码和识读原理，使其能兼容部分一维条码的设备与印刷技术。不过，由于存在多行，需要更复杂的算法来判断和解码各行数据 。</p>
+<p>矩阵式二维条码 (如 QR 码) 则完全不同，它在一个矩形区域内，通过黑白像素（点）的矩阵排列来编码信息 。点的有无代表二进制的“1”和“0”，其组合决定了条码的含义 。这种条码基于计算机图像处理技术，我们日常最常见的二维码就属于这一类 。</p>
+<h3 id="根据坐标画二维码"><a href="#根据坐标画二维码" class="headerlink" title="根据坐标画二维码"></a>根据坐标画二维码</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;xy.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read().split(<span class="string">&#x27;\n&#x27;</span>)</span><br><span class="line">img = Image.new(<span class="string">&#x27;1&#x27;</span>, (<span class="number">500</span>,<span class="number">500</span>), <span class="number">255</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(data)):</span><br><span class="line">    img.putpixel(<span class="built_in">eval</span>(data[i]), <span class="number">0</span>)</span><br><span class="line">img.save(<span class="string">&#x27;er.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="根据-01-比特串画二维码"><a href="#根据-01-比特串画二维码" class="headerlink" title="根据 01 比特串画二维码"></a>根据 01 比特串画二维码</h3><p>有时我们能拿到一个全是 01 bit 串的文件，目的就是依据 01 比特串进行画图。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&#x27;01bit.txt&#x27;</span>, <span class="string">&#x27;r&#x27;</span>) <span class="keyword">as</span> f:</span><br><span class="line">    data = f.read()</span><br><span class="line">w, h = <span class="number">370</span>, <span class="number">370</span></span><br><span class="line">img = Image.new(<span class="string">&#x27;1&#x27;</span>, (w, h), <span class="number">255</span>)</span><br><span class="line"><span class="keyword">for</span> y <span class="keyword">in</span> <span class="built_in">range</span>(h):</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> <span class="built_in">range</span>(w):</span><br><span class="line">        img.putpixel((x,y),<span class="built_in">int</span>(data[w*y+x]))</span><br><span class="line">img.save(<span class="string">&#x27;er.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="批量扫描二维码"><a href="#批量扫描二维码" class="headerlink" title="批量扫描二维码"></a>批量扫描二维码</h3><p>有时我们能拿到很多二维码，利用工具一个一个进行扫描不太现实，可以使用 python 的 pyzbar 进行批量扫描。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">from</span> pyzbar <span class="keyword">import</span> pyzbar</span><br><span class="line"> </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">qrdecode</span>(<span class="params">img</span>):</span><br><span class="line">    barcodes=pyzbar.decode(img)<span class="comment">#解析图片信息</span></span><br><span class="line">    <span class="keyword">for</span> barcode <span class="keyword">in</span> barcodes:</span><br><span class="line">        barcodeData = barcode.data.decode(<span class="string">&quot;utf-8&quot;</span>)<span class="comment">#二维码的data信息</span></span><br><span class="line">        <span class="keyword">return</span> barcodeData</span><br><span class="line">res = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">38</span>):</span><br><span class="line">    img = Image.<span class="built_in">open</span>(<span class="string">&#x27;qr/%04d.png&#x27;</span>%i)</span><br><span class="line">    res += qrdecode(img)</span><br><span class="line"><span class="built_in">print</span>(res)</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">shallot</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/11/07/misc/">http://example.com/2025/11/07/misc/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">shallot's blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CTF-misc/">CTF misc</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2025/04/28/CVE-2025-1974/" title="CVE-2025-1974漏洞复现"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">CVE-2025-1974漏洞复现</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">shallot</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#misc%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">misc学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9A%90%E5%86%99"><span class="toc-number">1.1.</span> <span class="toc-text">隐写</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%96%87%E4%BB%B6%E5%A4%B4%E6%80%BB%E7%BB%93"><span class="toc-number">1.1.1.</span> <span class="toc-text">常见文件头总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99"><span class="toc-number">1.1.2.</span> <span class="toc-text">图片隐写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E9%99%84%E5%8A%A0%E5%BC%8F%E7%9A%84%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">1、附加式的图片隐写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E5%9F%BA%E4%BA%8E%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84%E7%9A%84%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">2、基于文件结构的图片隐写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81LSB%E9%9A%90%E5%86%99"><span class="toc-number">1.1.2.3.</span> <span class="toc-text">3、LSB隐写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E5%AF%B9%E4%BA%8E%E4%B8%A4%E5%BC%A0%E7%9B%B8%E5%90%8C%E5%9B%BE%E7%89%87%E7%9A%84%E9%9A%90%E5%86%99"><span class="toc-number">1.1.2.4.</span> <span class="toc-text">4、对于两张相同图片的隐写</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E9%9A%90%E5%86%99"><span class="toc-number">1.1.3.</span> <span class="toc-text">文档隐写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1%E3%80%81%E9%9A%90%E8%97%8F%E6%96%87%E5%AD%97%EF%BC%88mac%E7%89%88%EF%BC%89"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">1、隐藏文字（mac版）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2%E3%80%81%E9%80%9A%E8%BF%87%E8%A7%A3%E5%8E%8B%E6%96%87%E6%A1%A3%E8%BF%9B%E8%A1%8C%E9%9A%90%E8%97%8F%EF%BC%9A"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">2、通过解压文档进行隐藏：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3%E3%80%81PDF%E9%9A%90%E5%86%99"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">3、PDF隐写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4%E3%80%81%E9%9B%B6%E5%AE%BD%E9%9A%90%E5%86%99"><span class="toc-number">1.1.3.4.</span> <span class="toc-text">4、零宽隐写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5%E3%80%81NTFS%E6%B5%81%E9%9A%90%E5%86%99"><span class="toc-number">1.1.3.5.</span> <span class="toc-text">5、NTFS流隐写</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9F%B3%E9%A2%91%E9%9A%90%E5%86%99"><span class="toc-number">1.1.4.</span> <span class="toc-text">音频隐写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%91%A9%E6%96%AF%E7%94%B5%E7%A0%81"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">摩斯电码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MP3%E9%9F%B3%E9%A2%91%E9%9A%90%E5%86%99"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">MP3音频隐写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A2%E5%BD%A2%E5%9B%BE"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">波形图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%91%E8%B0%B1%E5%9B%BE"><span class="toc-number">1.1.4.4.</span> <span class="toc-text">频谱图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E9%9A%90%E5%86%99"><span class="toc-number">1.1.5.</span> <span class="toc-text">视频隐写</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E5%8C%85%E7%9B%B8%E5%85%B3"><span class="toc-number">1.2.</span> <span class="toc-text">压缩包相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E6%89%8B%E6%AE%B5"><span class="toc-number">1.2.1.</span> <span class="toc-text">加密手段</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#zip-%E4%BC%AA%E5%8A%A0%E5%AF%86%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">zip 伪加密破解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#rar-%E4%BC%AA%E5%8A%A0%E5%AF%86%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">rar 伪加密破解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">暴力破解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E5%85%B8%E6%94%BB%E5%87%BB"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">字典攻击</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A9%E7%A0%81%E6%94%BB%E5%87%BB"><span class="toc-number">1.2.1.5.</span> <span class="toc-text">掩码攻击</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%8E%E6%96%87%E6%94%BB%E5%87%BB"><span class="toc-number">1.2.1.6.</span> <span class="toc-text">明文攻击</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%83%85%E6%99%AF%E4%B8%80%EF%BC%9A%E5%AF%86%E7%A0%81%E4%B8%8D%E9%9A%BE%EF%BC%8C%E5%8F%AF%E7%9B%B4%E6%8E%A5%E8%8E%B7%E5%BE%97"><span class="toc-number">1.2.1.6.1.</span> <span class="toc-text">情景一：密码不难，可直接获得</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%83%85%E6%99%AF%E4%BA%8C%EF%BC%9A%E5%AF%86%E7%A0%81%E5%BE%88%E9%9A%BE%EF%BC%8C%E5%8D%B3%E4%BD%BF%E6%B2%A1%E6%9C%89%E5%BE%97%E5%88%B0%E5%AF%86%E7%A0%81%EF%BC%8C%E5%8F%AA%E8%A6%81%E5%BE%97%E5%88%B0%E4%B8%8B%E5%9B%BE%E6%A1%86%E4%B8%AD%E7%9A%84%E4%B8%89%E4%B8%AA%E5%AF%86%E9%92%A5%EF%BC%8C%E5%8D%B3%E5%8F%AF%E8%A7%A3%E5%AF%86%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.1.6.2.</span> <span class="toc-text">情景二：密码很难，即使没有得到密码，只要得到下图框中的三个密钥，即可解密文件</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CRC32%E7%A2%B0%E6%92%9E"><span class="toc-number">1.2.1.7.</span> <span class="toc-text">CRC32碰撞</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">流量分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#wireshark-%E5%9F%BA%E7%A1%80"><span class="toc-number">1.3.1.</span> <span class="toc-text">wireshark 基础</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E8%BF%87%E6%BB%A4%E5%99%A8%E8%A7%84%E5%88%99"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">常见过滤器规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">常见操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%9A%81%E5%89%91-AntSword"><span class="toc-number">1.3.2.</span> <span class="toc-text">蚁剑(AntSword)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%93%A5%E6%96%AF%E6%8B%89-Godzilla"><span class="toc-number">1.3.3.</span> <span class="toc-text">哥斯拉(Godzilla)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FTP%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90"><span class="toc-number">1.3.4.</span> <span class="toc-text">FTP流量分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TLS%E6%B5%81%E9%87%8F%E5%88%86%E6%9E%90"><span class="toc-number">1.3.5.</span> <span class="toc-text">TLS流量分析</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%96%E8%AF%81"><span class="toc-number">1.4.</span> <span class="toc-text">计算机取证</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A3%81%E7%9B%98%E5%8F%96%E8%AF%81"><span class="toc-number">1.4.1.</span> <span class="toc-text">磁盘取证</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81"><span class="toc-number">1.4.2.</span> <span class="toc-text">内存取证</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="toc-number">1.5.</span> <span class="toc-text">二维码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E5%9D%90%E6%A0%87%E7%94%BB%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="toc-number">1.5.1.</span> <span class="toc-text">根据坐标画二维码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE-01-%E6%AF%94%E7%89%B9%E4%B8%B2%E7%94%BB%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="toc-number">1.5.2.</span> <span class="toc-text">根据 01 比特串画二维码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%B9%E9%87%8F%E6%89%AB%E6%8F%8F%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="toc-number">1.5.3.</span> <span class="toc-text">批量扫描二维码</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/07/misc/" title="misc学习笔记">misc学习笔记</a><time datetime="2025-11-07T05:42:10.016Z" title="发表于 2025-11-07 13:42:10">2025-11-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/28/CVE-2025-1974/" title="CVE-2025-1974漏洞复现">CVE-2025-1974漏洞复现</a><time datetime="2025-04-28T10:47:09.706Z" title="发表于 2025-04-28 18:47:09">2025-04-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/15/0410_java/" title="java   Commons Collection1链学习">java   Commons Collection1链学习</a><time datetime="2025-04-14T16:22:18.306Z" title="发表于 2025-04-15 00:22:18">2025-04-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/15/0402/" title="java 动态代理">java 动态代理</a><time datetime="2025-04-14T16:21:56.885Z" title="发表于 2025-04-15 00:21:56">2025-04-15</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/06/websocket/" title="利用SpringBoot实现websocket通信">利用SpringBoot实现websocket通信</a><time datetime="2025-04-06T15:46:48.355Z" title="发表于 2025-04-06 23:46:48">2025-04-06</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2025 By shallot</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
